@@ -1,5 +1,5 @@
-// config/swagger.js
 const swaggerJsdoc = require("swagger-jsdoc");
+const path = require("path");
 
 const options = {
   definition: {
@@ -11,12 +11,16 @@ const options = {
     },
     servers: [
       {
+        url: "https://ecommerce-backend-4raa.onrender.com",
+        description: "Production Server",
+      },
+      {
         url: "http://localhost:3000",
         description: "Development Server",
       },
     ],
   },
-  apis: ["./routes/*.js"],
+  apis: [path.join(__dirname, "../routes/*.js")],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
